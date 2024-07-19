@@ -1,27 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Category } from '../../types/category.type';
-import { CategoryService } from '../../services/category.service';
+import { CategoriesStoreItem } from '../../services/categories.storeItem';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-sidenavigation',
   templateUrl: './sidenavigation.component.html',
-  styleUrl: './sidenavigation.component.scss',
+  styleUrls: ['./sidenavigation.component.scss'],
 })
-export class SidenavigationComponent {
+export class SidenavigationComponent implements OnDestroy {
   categories: Category[] = [];
+  subscriptions: Subscription = new Subscription();
 
-  //Inject the cateogry service in the constructor
-  constructor(categoryService: CategoryService) {
-    categoryService.getAllCategories().subscribe((categories) => {
-      this.categories = categories;
-    });
+  //Instead of injecting the category service, use the CategoryStoreItem
+  constructor(categoryStore: CategoriesStoreItem) {
+    this.subscriptions.add(
+      categoryStore.categories$.subscribe((categories) => {
+        this.categories = categories;
+      })
+    );
   }
 
   getCategories(parentCategoryId?: number): Category[] {
-    return this.categories?.filter((category) =>
+    return this.categories.filter((category) =>
       parentCategoryId
-        ? category?.parent_category_id === parentCategoryId
-        : category?.parent_category_id === null
+        ? category.parent_category_id === parentCategoryId
+        : category.parent_category_id === null
     );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 }
