@@ -8,8 +8,10 @@ import { SidenavigationComponent } from './components/sidenavigation/sidenavigat
 import { ProductsComponent } from './components/products/products.component';
 import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-import { CategoryService } from './services/category.service';
-import { CategoriesStoreItem } from './services/categories.storeItem';
+import { CategoryService } from './services/category/category.service';
+import { CategoriesStoreItem } from './services/category/categories.storeItem';
+import { ProductStoreItem } from './services/product/products.storeItem';
+import { ProductsService } from './services/product/products.service';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,11 @@ import { CategoriesStoreItem } from './services/categories.storeItem';
     ProductsComponent,
   ],
   imports: [CommonModule, FontAwesomeModule, SharedModule, HttpClientModule],
-  providers: [CategoryService, CategoriesStoreItem],
+  providers: [
+    CategoryService,
+    CategoriesStoreItem,
+    ProductsService,
+    ProductStoreItem,
+  ],
 })
 export class HomeModule {}

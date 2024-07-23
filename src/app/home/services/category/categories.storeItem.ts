@@ -1,5 +1,5 @@
-import { StoreItem } from '../../shared/storeItem';
-import { Category } from '../types/category.type';
+import { StoreItem } from '../../../shared/storeItem';
+import { Category } from '../../types/category.type';
 import { CategoryService } from './category.service';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
@@ -8,7 +8,6 @@ import { Observable, map } from 'rxjs';
 export class CategoriesStoreItem extends StoreItem<Category[]> {
   constructor(private categoryService: CategoryService) {
     super([]);
-    this.loadCategories();
   }
 
   async loadCategories() {
