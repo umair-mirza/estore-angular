@@ -19,4 +19,8 @@ export class ProductStoreItem extends StoreItem<Product[]> {
   get products$(): Observable<Product[]> {
     return this.value$;
   }
+
+  get products(): Product[] {
+    return this.value;
+  }
 }

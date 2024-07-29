@@ -1,5 +1,7 @@
-<app-header></app-header>
-<app-catnavigation></app-catnavigation>
+<app-header (searchClicked)="onSearchKeyword($event)"></app-header>
+<app-catnavigation
+  (categoryClicked)="onSelectCategory($event)"
+></app-catnavigation>
 
 <div class="container-fluid">
   <div class="row">

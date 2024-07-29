@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CategoriesStoreItem } from './services/category/categories.storeItem';
 import { ProductStoreItem } from './services/product/products.storeItem';
+import { Searchkeyword } from './types/searchKeyword.type';
 
 @Component({
   selector: 'app-home',
@@ -18,5 +19,18 @@ export class HomeComponent {
 
   onSelectSubCategory(subCategoryId: number): void {
     this.productsStoreItem.loadProducts('subCategoryId=' + subCategoryId);
+  }
+
+  onSelectCategory(categoryId: number): void {
+    this.productsStoreItem.loadProducts('mainCategoryId=' + categoryId);
+  }
+
+  onSearchKeyword(searchKeyword: Searchkeyword): void {
+    this.productsStoreItem.loadProducts(
+      'mainCategoryId=' +
+        searchKeyword.categoryId +
+        '&keyword=' +
+        searchKeyword.keyword
+    );
   }
 }
