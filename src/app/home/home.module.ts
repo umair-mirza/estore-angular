@@ -15,6 +15,7 @@ import { ProductsService } from './services/product/products.service';
 import { RouterModule } from '@angular/router';
 import { HomeRoutingModule } from './home-module.routing';
 import { ProductsGalleryComponent } from './components/products-gallery/products-gallery.component';
+import { ProductdetailsComponent } from './components/productdetails/productdetails.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ProductsGalleryComponent } from './components/products-gallery/products
     SidenavigationComponent,
     ProductsComponent,
     ProductsGalleryComponent,
+    ProductdetailsComponent,
   ],
   imports: [
     CommonModule,
