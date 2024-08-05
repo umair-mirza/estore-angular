@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { ProductStoreItem } from '../../services/product/products.storeItem';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { Product } from '../../types/products.type';
+import { CartStoreItem } from '../../services/cart/cart.storeItem';
 
 @Component({
   selector: 'app-products',
@@ -7,5 +10,13 @@ import { ProductStoreItem } from '../../services/product/products.storeItem';
   styleUrl: './products.component.scss',
 })
 export class ProductsComponent {
-  constructor(public productsStore: ProductStoreItem) {}
+  faShoppingCart = faShoppingCart;
+  constructor(
+    public productsStore: ProductStoreItem,
+    private cart: CartStoreItem
+  ) {}
+
+  addToCart(product: Product) {
+    this.cart.addProduct(product);
+  }
 }

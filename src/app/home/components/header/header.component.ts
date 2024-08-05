@@ -8,6 +8,7 @@ import { CategoriesStoreItem } from '../../services/category/categories.storeIte
 import { Searchkeyword } from '../../types/searchKeyword.type';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
+import { CartStoreItem } from '../../services/cart/cart.storeItem';
 
 @Component({
   selector: 'app-header',
@@ -27,7 +28,8 @@ export class HeaderComponent {
 
   constructor(
     public categoryStore: CategoriesStoreItem,
-    private router: Router
+    private router: Router,
+    public cartStore: CartStoreItem
   ) {
     router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
