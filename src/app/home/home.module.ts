@@ -17,6 +17,7 @@ import { HomeRoutingModule } from './home-module.routing';
 import { ProductsGalleryComponent } from './components/products-gallery/products-gallery.component';
 import { ProductdetailsComponent } from './components/productdetails/productdetails.component';
 import { CartStoreItem } from './services/cart/cart.storeItem';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { CartStoreItem } from './services/cart/cart.storeItem';
     ProductsComponent,
     ProductsGalleryComponent,
     ProductdetailsComponent,
+    CartComponent,
   ],
   imports: [
     CommonModule,
